@@ -61,9 +61,23 @@ var value = results.filter((item) => Math.abs(item.runningtime - min_runningtime
 console.log('menor tempo de execução')
 console.log(value) */
 
-var runningtimes = results.map((item) => +item.runningtime)
+/* var runningtimes = results.map((item) => +item.runningtime)
 var max_runningtimes = Math.max.apply(null, runningtimes)
 var value = results.filter((item) => Math.abs(item.runningtime - max_runningtimes) < Number.EPSILON)
 
 console.log('menor tempo de execução')
+console.log(value)
+ */
+// maior recall
+
+/* var recalls = results.map((item) => +item.recall)
+var max_recall = Math.max.apply(null, recalls)
+var value = results.filter((item) => Math.abs(item.recall - max_recall) < Number.EPSILON)
+
+console.log(value) */
+
+var treinamentos = results.map((item) => +item.treinamento)
+var max_treinamento = Math.max.apply(null, treinamentos)
+var value = results.filter((item) => Math.abs(item.treinamento - max_treinamento) < Number.EPSILON)
+
 console.log(value)

@@ -56,24 +56,7 @@ listFile = ['alinevspredator/AutoColorCorrelogram.arff',
             'scissors/Moments.arff',
             'scissors/MPO.arff',
             'scissors/MPOC.arff',
-            'scissors/PHOG.arff',
-            'shapes/AutoColorCorrelogram.arff',
-            'shapes/FCTH.arff',
-            'shapes/JCD.arff',
-            'shapes/LBP.arff',
-            'shapes/Moments.arff',
-            'shapes/MPO.arff',
-            'shapes/MPOC.arff',
-            'shapes/PHOG.arff',
-            'vegetables/AutoColorCorrelogram.arff',
-            'vegetables/LBP.arff',
-            'vegetables/FCTH.arff',
-            'vegetables/JCD.arff',
-            'vegetables/LBP.arff',
-            'vegetables/Moments.arff',
-            'vegetables/MPO.arff',
-            'vegetables/MPOC.arff',
-            'vegetables/PHOG.arff'
+            'scissors/PHOG.arff'
             ]
 resultsTxt = open("results.txt", "a")
 resultsJson = open("results.json", "a")
@@ -222,7 +205,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[0]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
     t = time.time()
 
@@ -251,7 +234,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[1]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
 
     t = time.time()
@@ -281,7 +264,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[2]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
     t = time.time()
 
@@ -310,7 +293,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[3]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
 
     t = time.time()
@@ -340,7 +323,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[4]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
 
     t = time.time()
@@ -370,7 +353,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[5]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
 
     t = time.time()
@@ -400,7 +383,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[6]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
 
     t = time.time()
@@ -430,7 +413,7 @@ for selectedNormalization in range(1):
       'f1_score': '{:.5f}'.format(f1score[7]),
       'runningtime': '{:.5f}'.format(time.time() - t)
     }
-    datastore.append(data)
+    #datastore.append(data)
 
 
     eixo_x = ['GaussianNB', 'Logistic Regression', 'Decision Tree', 'k-NN', 'LDA', 'SVM', 'RandomForest', 'Neural Net']
@@ -473,7 +456,7 @@ for selectedNormalization in range(1):
     data1 = [dados_train, dados_test]
     fig = go.Figure(data=data1, layout=layout)
     # py.iplot(fig)
-
+    pio.write_image(fig, 'images/'+name[0]+name[1]+'_b'+'.png')
 
     # configure_plotly_browser_state()
 
@@ -531,6 +514,6 @@ for selectedNormalization in range(1):
     data1 = [dados_precision, dados_recall, dados_f1score]
     fig = go.Figure(data=data1, layout=layout)
     # py.plot(fig)
-    pio.write_image(fig, 'images/'+name[1]+'.png')
+    pio.write_image(fig, 'images/'+name[0]+name[1]+'_p'+'.png')
 
-writeJSONFile(datastore)
+#writeJSONFile(datastore)
