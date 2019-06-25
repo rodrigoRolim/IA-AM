@@ -35,7 +35,40 @@ def writeJSONFile(data):
 
 
 
-listFile = ['vegetables/FCTH.arff']
+listFile = ['alinevspredator/AutoColorCorrelogram.arff',
+            'alinevspredator/FCTH.arff',
+            'alinevspredator/JCD.arff',
+            'alinevspredator/LBP.arff',
+            'alinevspredator/Moments.arff',
+            'alinevspredator/MPO.arff',
+            'alinevspredator/MPOC.arff',
+            'alinevspredator/PHOG.arff',
+            'scissors/AutoColorCorrelogram.arff',
+            'scissors/FCTH.arff',
+            'scissors/JCD.arff',
+            'scissors/LBP.arff',
+            'scissors/Moments.arff',
+            'scissors/MPO.arff',
+            'scissors/MPOC.arff',
+            'scissors/PHOG.arff',
+            'shapes/AutoColorCorrelogram.arff',
+            'shapes/FCTH.arff',
+            'shapes/JCD.arff',
+            'shapes/LBP.arff',
+            'shapes/Moments.arff',
+            'shapes/MPO.arff',
+            'shapes/MPOC.arff',
+            'shapes/PHOG.arff',
+            'vegetables/AutoColorCorrelogram.arff',
+            'vegetables/LBP.arff',
+            'vegetables/FCTH.arff',
+            'vegetables/JCD.arff',
+            'vegetables/LBP.arff',
+            'vegetables/Moments.arff',
+            'vegetables/MPO.arff',
+            'vegetables/MPOC.arff',
+            'vegetables/PHOG.arff'
+            ]
 # Carrega o .arff
 datastore = []
 for selectedNormalization in range(1, 5):

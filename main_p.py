@@ -41,27 +41,11 @@ def configure_plotly_browser_state():
         </script>
         '''))
 
-listFile = ['alinevspredator/AutoColorCorrelogram.arff',
-            'alinevspredator/FCTH.arff',
-            'alinevspredator/JCD.arff',
-            'alinevspredator/LBP.arff',
-            'alinevspredator/Moments.arff',
-            'alinevspredator/MPO.arff',
-            'alinevspredator/MPOC.arff',
-            'alinevspredator/PHOG.arff',
-            'scissors/AutoColorCorrelogram.arff',
-            'scissors/FCTH.arff',
-            'scissors/JCD.arff',
-            'scissors/LBP.arff',
-            'scissors/Moments.arff',
-            'scissors/MPO.arff',
-            'scissors/MPOC.arff',
-            'scissors/PHOG.arff'
-            ]
+listFile = ['scissors/PHOG.arff']
 resultsTxt = open("results.txt", "a")
 resultsJson = open("results.json", "a")
 datastore = []
-for selectedNormalization in range(1):
+for selectedNormalization in range(5):
 
   for item in listFile:
     raw_data = loadarff(item)
@@ -514,6 +498,6 @@ for selectedNormalization in range(1):
     data1 = [dados_precision, dados_recall, dados_f1score]
     fig = go.Figure(data=data1, layout=layout)
     # py.plot(fig)
-    pio.write_image(fig, 'images/'+name[0]+name[1]+'_p'+'.png')
+    pio.write_image(fig, 'images/'+str(selectedNormalization)+name[0]+name[1]+'_p'+'.png')
 
 #writeJSONFile(datastore)
