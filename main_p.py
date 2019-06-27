@@ -42,8 +42,7 @@ def configure_plotly_browser_state():
         '''))
 
 listFile = ['scissors/PHOG.arff']
-resultsTxt = open("results.txt", "a")
-resultsJson = open("results.json", "a")
+
 datastore = []
 for selectedNormalization in range(5):
 
