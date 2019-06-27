@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:supervisited": "node supervisited.js"
+    "start:supervised": "node supervised.js",
+    "start:no:supervised": "node nosupervised.js",
+    "start:semi:supervised": "node semisupervised.js"
   },
   "keywords": [],
   "author": "",
