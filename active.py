@@ -261,7 +261,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[0]),
         'recall': '{:.5f}'.format(recall[0]),
         'f1_score': '{:.5f}'.format(f1score[0]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # Logistic Regression
@@ -301,7 +302,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[1]),
         'recall': '{:.5f}'.format(recall[1]),
         'f1_score': '{:.5f}'.format(f1score[1]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # Decision Tree
@@ -340,7 +342,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[2]),
         'recall': '{:.5f}'.format(recall[2]),
         'f1_score': '{:.5f}'.format(f1score[2]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # K-Nearest Neighbors
@@ -380,7 +383,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[3]),
         'recall': '{:.5f}'.format(recall[3]),
         'f1_score': '{:.5f}'.format(f1score[3]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # Linear Discriminant Analysis
@@ -419,7 +423,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[4]),
         'recall': '{:.5f}'.format(recall[4]),
         'f1_score': '{:.5f}'.format(f1score[4]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # Support Vector Machine
@@ -459,7 +464,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[5]),
         'recall': '{:.5f}'.format(recall[5]),
         'f1_score': '{:.5f}'.format(f1score[5]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # RandomForest
@@ -499,7 +505,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[6]),
         'recall': '{:.5f}'.format(recall[6]),
         'f1_score': '{:.5f}'.format(f1score[6]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # Neural Net
@@ -539,7 +546,8 @@ for selectedNormalization in range(1,3):
         'precision': '{:.5f}'.format(precision[7]),
         'recall': '{:.5f}'.format(recall[7]),
         'f1_score': '{:.5f}'.format(f1score[7]),
-        'runningtime': '{:.5f}'.format(time.time() - t)
+        'runningtime': '{:.5f}'.format(time.time() - t),
+        'centroides': num_c
       }
       datastore.append(data)
       # Salvando as acurácias globais

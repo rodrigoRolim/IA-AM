@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:supervised": "node supervised.js",
     "start:no:supervised": "node nosupervised.js",
-    "start:semi:supervised": "node semisupervised.js"
+    "start:semi:supervised": "node semisupervised.js",
+    "start:active": "node active.js"
   },
   "keywords": [],
   "author": "",

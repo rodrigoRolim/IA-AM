@@ -18,10 +18,10 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 app.get('/min-time', function (req, res) {
-  res.json(performance.max_time())
+  res.json(performance.min_time())
 })
 app.get('/max-time', function (req, res) {
-  res.json(performance.min_time())
+  res.json(performance.max_time())
 })
 app.get('/recall', function (req, res) {
   res.json(performance.recall())
