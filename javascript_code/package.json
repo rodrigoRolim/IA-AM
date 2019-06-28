@@ -8,7 +8,8 @@
     "start:supervised": "node supervised.js",
     "start:no:supervised": "node nosupervised.js",
     "start:semi:supervised": "node semisupervised.js",
-    "start:active": "node active.js"
+    "start:active": "node active.js",
+    "start:general": "node general.js"
   },
   "keywords": [],
   "author": "",

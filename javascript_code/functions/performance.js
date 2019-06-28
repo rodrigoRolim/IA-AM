@@ -2,11 +2,11 @@ function Performance (results) {
   this._results = results
 }
 Performance.prototype.max_precision = function () {
-  
+
   var precisions = this._results.map((item) => +item.precision)
   max_precision = Math.max.apply(null, precisions)
   var value = this._results.filter((item) => Math.abs(item.precision - max_precision) < Number.EPSILON)
-  
+
   return value
 }
 Performance.prototype.min_time = function () {
