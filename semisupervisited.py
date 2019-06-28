@@ -107,33 +107,32 @@ for selectedNormalization in range(5):
       descritor = name[1].split('.')[0]
       # Escolha umas das 4 técnicas de normalização existentes
       # 1 = MinMaxScaler, 2 = StandardScaler, 3 = MaxAbsScaler, 4 = RobustScaler
-      selectedNormalization = 1
+      # selectedNormalization = 1
+      if selectedNormalization != 0:
+        if selectedNormalization == 1:
+          scaler = preprocessing.MinMaxScaler()
+        if selectedNormalization == 2:
+          scaler = preprocessing.StandardScaler()
+        if selectedNormalization == 3:
+          scaler = preprocessing.MaxAbsScaler()
+        if selectedNormalization == 4:
+          scaler = preprocessing.RobustScaler()
+        # Escalando os dados de treinamento
+        X_train = scaler.fit_transform(X_train)
+        # Escalando os dados de teste com os dados de treinamento, visto que os dados de teste podem ser apenas 1 amostra
+        X_test = scaler.transform(X_test)
 
-      if selectedNormalization == 1:
-        scaler = preprocessing.MinMaxScaler()
-      if selectedNormalization == 2:
-        scaler = preprocessing.StandardScaler()
-      if selectedNormalization == 3:
-        scaler = preprocessing.MaxAbsScaler()
-      if selectedNormalization == 4:
-        scaler = preprocessing.RobustScaler()
-        
-      # Escalando os dados de treinamento
-      X_train = scaler.fit_transform(X_train)
-      # Escalando os dados de teste com os dados de treinamento, visto que os dados de teste podem ser apenas 1 amostra
-      X_test = scaler.transform(X_test)
-
-      print('Média do Conjunto de Treinamento por Feature:')
-      print(X_train.mean(axis = 0))
-      print('Desvio Padrão do Conjunto de Treinamento por Feature:')
-      print(X_train.std(axis = 0))
+      #print('Média do Conjunto de Treinamento por Feature:')
+      #print(X_train.mean(axis = 0))
+      #print('Desvio Padrão do Conjunto de Treinamento por Feature:')
+      #print(X_train.std(axis = 0))
 
       # Dividindo o conjunto em 20% rotuladas e 80% não rotulada.
       # O parâmetro random_state = 327 define que sempre será dividido da mesma forma o conjunto.
       X_train_labeled, X_test_unlabeled, y_train_labeled, y_test_unlabeled = train_test_split(X_train, y_train, test_size=qtd_trainning,random_state=327)
 
-      print('Tamanho do conjunto Rotulado: {}'.format(X_train_labeled.shape))
-      print('Tamanho do conjunto Não Rotulado: {}'.format(X_test_unlabeled.shape))
+      #print('Tamanho do conjunto Rotulado: {}'.format(X_train_labeled.shape))
+      #print('Tamanho do conjunto Não Rotulado: {}'.format(X_test_unlabeled.shape))
 
       # Transforma a lista em Numpy Array
       y_train_labeled = np.asarray(y_train_labeled)
@@ -157,8 +156,8 @@ for selectedNormalization in range(5):
       # Propagando os rótulos com Label Propagation
       lp_model = LabelPropagation(gamma=15, max_iter=30, kernel = 'rbf')
       lp_model.fit(X_train, labels)
-      print('')
-      print(lp_model)
+      #print('')
+      #print(lp_model)
       y_train = lp_model.transduction_
 
       # Inicializar os classificadores
@@ -248,7 +247,7 @@ for selectedNormalization in range(5):
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier': 'gaussian',
+        'classifier': 'Gaussian Naive Bayes',
         'treinamento': '{:.2f}'.format(acc_train[0]), 
         'teste': '{:.2f}'.format(acc_test[0]),
         'precision': '{:.5f}'.format(precision[0]),
@@ -289,7 +288,7 @@ for selectedNormalization in range(5):
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier':'regression',
+        'classifier':'Logistic Regression',
         'treinamento': '{:.2f}'.format(acc_train[1]), 
         'teste': '{:.2f}'.format(acc_test[1]),
         'precision': '{:.5f}'.format(precision[1]),
@@ -317,20 +316,12 @@ for selectedNormalization in range(5):
       # Salvando as acurácias nas listas
       acc_train.append(dectree.score(X_train, y_train))
       acc_test.append(dectree.score(X_test, y_test))
-      # print('Acuracia obtida com o Decision Tree no Conjunto de Treinamento: {:.2f}'.format(acc_train[2]))
-      # print('Acuracia obtida com o Decision Tree no Conjunto de Teste: {:.2f}'.format(acc_test[2]))
-      # print('Matriz de Confusão:')
-      # print(cm)
-      # print('Precision: {:.5f}'.format(precision[2]))
-      # print('Recall: {:.5f}'.format(recall[2]))
-      # print('F1-score: {:.5f}'.format(f1score[2]))
-      # print('(Tempo de execucao: {:.5f})'.format(time.time() - t))
-      # print('')
+     
       data = {
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier':'regression',
+        'classifier':'Decision Tree',
         'treinamento': '{:.2f}'.format(acc_train[2]), 
         'teste': '{:.2f}'.format(acc_test[2]),
         'precision': '{:.5f}'.format(precision[2]),
@@ -358,20 +349,12 @@ for selectedNormalization in range(5):
       # Salvando as acurácias nas listas
       acc_train.append(knn.score(X_train, y_train))
       acc_test.append(knn.score(X_test, y_test))
-      # print('Acuracia obtida com o K-Nearest Neighbors no Conjunto de Treinamento: {:.2f}'.format(acc_train[3]))
-      # print('Acuracia obtida com o K-Nearest Neighbors no Conjunto de Teste: {:.2f}'.format(acc_test[3]))
-      # print('Matriz de Confusão:')
-      # print(cm)
-      # print('Precision: {:.5f}'.format(precision[3]))
-      # print('Recall: {:.5f}'.format(recall[3]))
-      # print('F1-score: {:.5f}'.format(f1score[3]))
-      # print('(Tempo de execucao: {:.5f})'.format(time.time() - t))
-      # print('')
+     
       data = {
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier':'regression',
+        'classifier':'K-Nearest Neighbors',
         'treinamento': '{:.2f}'.format(acc_train[3]), 
         'teste': '{:.2f}'.format(acc_test[3]),
         'precision': '{:.5f}'.format(precision[3]),
@@ -399,20 +382,12 @@ for selectedNormalization in range(5):
       # Salvando as acurácias nas listas
       acc_train.append(lda.score(X_train, y_train))
       acc_test.append(lda.score(X_test, y_test))
-      # print('Acuracia obtida com o Linear Discriminant Analysis no Conjunto de Treinamento: {:.2f}'.format(acc_train[4]))
-      # print('Acuracia obtida com o Linear Discriminant Analysis no Conjunto de Teste: {:.2f}'.format(acc_test[4]))
-      # print('Matriz de Confusão:')
-      # print(cm)
-      # print('Precision: {:.5f}'.format(precision[4]))
-      # print('Recall: {:.5f}'.format(recall[4]))
-      # print('F1-score: {:.5f}'.format(f1score[4]))
-      # print('(Tempo de execucao: {:.5f})'.format(time.time() - t))
-      # print('')
+     
       data = {
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier':'tree',
+        'classifier':'Linear Discriminant Analysis',
         'treinamento': '{:.2f}'.format(acc_train[4]), 
         'teste': '{:.2f}'.format(acc_test[4]),
         'precision': '{:.5f}'.format(precision[4]),
@@ -441,20 +416,12 @@ for selectedNormalization in range(5):
       # Salvando as acurácias nas listas
       acc_train.append(svm.score(X_train, y_train))
       acc_test.append(svm.score(X_test, y_test))
-      # print('Acuracia obtida com o Support Vector Machine no Conjunto de Treinamento: {:.2f}'.format(acc_train[5]))
-      # print('Acuracia obtida com o Support Vector Machine no Conjunto de Teste: {:.2f}'.format(acc_test[5]))
-      # print('Matriz de Confusão:')
-      # print(cm)
-      # print('Precision: {:.5f}'.format(precision[5]))
-      # print('Recall: {:.5f}'.format(recall[5]))
-      # print('F1-score: {:.5f}'.format(f1score[5]))
-      # print('(Tempo de execucao: {:.5f})'.format(time.time() - t))
-      # print('')
+      
       data = {
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier':'neighbors',
+        'classifier':'Support Vector Machine',
         'treinamento': '{:.2f}'.format(acc_train[5]), 
         'teste': '{:.2f}'.format(acc_test[5]),
         'precision': '{:.5f}'.format(precision[5]),
@@ -482,20 +449,12 @@ for selectedNormalization in range(5):
       # Salvando as acurácias nas listas
       acc_train.append(rf.score(X_train, y_train))
       acc_test.append(rf.score(X_test, y_test))
-      # print('Acuracia obtida com o RandomForest no Conjunto de Treinamento: {:.2f}'.format(acc_train[6]))
-      # print('Acuracia obtida com o RandomForest no Conjunto de Teste: {:.2f}'.format(acc_test[6]))
-      # print('Matriz de Confusão:')
-      # print(cm)
-      # print('Precision: {:.5f}'.format(precision[6]))
-      # print('Recall: {:.5f}'.format(recall[6]))
-      # print('F1-score: {:.5f}'.format(f1score[6]))
-      # print('(Tempo de execucao: {:.5f})'.format(time.time() - t))
-      # print('')
+     
       data = {
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier':'neighbors',
+        'classifier':'RandomForest',
         'treinamento': '{:.2f}'.format(acc_train[6]), 
         'teste': '{:.2f}'.format(acc_test[6]),
         'precision': '{:.5f}'.format(precision[6]),
@@ -523,20 +482,12 @@ for selectedNormalization in range(5):
       # Salvando as acurácias nas listas
       acc_train.append(nnet.score(X_train, y_train))
       acc_test.append(nnet.score(X_test, y_test))
-      # print('Acuracia obtida com o Neural Net no Conjunto de Treinamento: {:.2f}'.format(acc_train[7]))
-      # print('Acuracia obtida com o Neural Net no Conjunto de Teste: {:.2f}'.format(acc_test[7]))
-      # print('Matriz de Confusão:')
-      # print(cm)
-      # print('Precision: {:.5f}'.format(precision[7]))
-      # print('Recall: {:.5f}'.format(recall[7]))
-      # print('F1-score: {:.5f}'.format(f1score[7]))
-      # print('(Tempo de execucao: {:.5f})'.format(time.time() - t))
-      # print('')
+      
       data = {
         'normalization': selectedNormalization,
         'date': name[0],
         'extrator': descritor,
-        'classifier':'neighbors',
+        'classifier':'Neural Net',
         'treinamento': '{:.2f}'.format(acc_train[7]), 
         'teste': '{:.2f}'.format(acc_test[7]),
         'precision': '{:.5f}'.format(precision[7]),
@@ -591,7 +542,7 @@ for selectedNormalization in range(5):
       data = [dados_train, dados_test]
       fig = go.Figure(data=data, layout=layout)
       # py.iplot(fig)
-      pio.write_image(fig, 'images_semi/'+name[0]+name[1]+'_b'+'.png')
+      # pio.write_image(fig, 'images_semi/'+str(selectedNormalization)+name[0]+name[1]+'_b'+'.png')
 
       # Chamando a função do gráfico interativo
       # configure_plotly_browser_state()
@@ -652,6 +603,6 @@ for selectedNormalization in range(5):
       data = [dados_precision, dados_recall, dados_f1score]
       fig = go.Figure(data=data, layout=layout)
       # py.iplot(fig)
-      pio.write_image(fig, 'images_semi/'+str(selectedNormalization)+name[0]+name[1]+'_p'+'.png')
+      # pio.write_image(fig, 'images_semi/'+str(selectedNormalization)+name[0]+name[1]+'_p'+'.png')
 
 writeJSONFile(datastore)
