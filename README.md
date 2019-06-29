@@ -3,7 +3,7 @@ Os tipos de aprendizado de máquina e o seus comandos para executar o código qu
 
 ##### pre-requisitos:
 - node instalado;
-- acessar `cd \javascript_code` e executar `npm install`
+- e, então, acesse `cd \javascript_code` e execute `npm install` para instalar todas as dependências necessárias
 ##### aprendizado supervisionado
 
 * `npm run start:supervised`
