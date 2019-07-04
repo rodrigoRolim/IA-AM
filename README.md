@@ -24,7 +24,7 @@ Os tipos de aprendizado de máquina e o seus comandos para executar o código qu
 * `npm run start:active`
 * acesse localhost:3003 no seu navegador
 
-##### resultado geral
+##### resultado geral (tomando o melhor de todos)
 Todos os resultados gerados e armazenados nos arquivos json foram analisados nas rotas deste servidor. Para acessá-las digite:
 
 * `npm run start:general`
