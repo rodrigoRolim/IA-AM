@@ -134,4 +134,7 @@ Performance.prototype.frenquency = function () {
 Performance.prototype.all = function () {
   return this._results;
 }
+Performance.prototype.numIterations = function () {
+  return this._results.length;
+}
 module.exports = Performance

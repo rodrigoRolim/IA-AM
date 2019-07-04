@@ -39,6 +39,9 @@ app.get('/oftener', function (req, res) {
 app.get('/all', function (req, res) {
   res.json(performance.all())
 })
+app.get('/number', function (req, res) {
+  res.json(performance.numIterations())
+})
 app.listen(3003, function () {
   console.log('Listening on the port 3003')
 })
