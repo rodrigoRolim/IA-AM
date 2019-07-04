@@ -131,4 +131,7 @@ Performance.prototype.frenquency = function () {
 
   return values
 }
+Performance.prototype.all = function () {
+  return this._results;
+}
 module.exports = Performance

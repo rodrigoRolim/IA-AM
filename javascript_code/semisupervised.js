@@ -41,7 +41,9 @@ app.get('/precision', function (req, res) {
 app.get('/oftener', function (req, res) {
   res.json(performance.frenquency())
 })
-
+app.get('/all', function (req, res) {
+  res.json(performance.all())
+})
 app.listen(3001, function () {
   console.log('Listening in port 3001')
 })
